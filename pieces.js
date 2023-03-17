@@ -39,6 +39,7 @@ boutonTrier.addEventListener("click", function() {
     console.log(piecesOrdonnees);
 });
 
+
 const boutonFiltrer = document.querySelector('.btn-filtrer'); /* Tri des éléments non abordables */
 
 boutonFiltrer.addEventListener("click", function() {
@@ -50,6 +51,7 @@ boutonFiltrer.addEventListener("click", function() {
     console.log(piecesFiltrees);
 });
 
+
 const boutonDescription = document.querySelector('.btn-nodesc'); /* Tri des éléments ne possédant pas une description */
 
 boutonDescription.addEventListener("click", function() {
@@ -60,6 +62,7 @@ boutonDescription.addEventListener("click", function() {
 
     console.log(piecesFiltrees);
 });
+
 
 const boutonDecroissant = document.querySelector('.btn-decroissant'); /* Tri par pri décroissant */
 
@@ -74,6 +77,7 @@ boutonDecroissant.addEventListener("click", function() {
     console.log(piecesOrdonnees);
 });
 
+
 const boutonMap = document.querySelector('.btn-map'); /* Tri pour ne récupérer que les noms des pièces*/
 
 boutonMap.addEventListener("click", function() {
@@ -81,11 +85,11 @@ boutonMap.addEventListener("click", function() {
     console.log(nomsPieces);
 });
 
-const boutonMapTri = document.querySelector('.btn-mapTri'); /* Affichage des noms des pièces abordables */
+
+const boutonMapTri = document.querySelector('.btn-abordable'); /* Affichage des noms des pièces abordables */
 
 const abordables = document.querySelector(".abordables"); 
 abordables.style.display = "none";
-
 
 boutonMapTri.addEventListener("click", function() {
     
@@ -110,5 +114,36 @@ boutonMapTri.addEventListener("click", function() {
     console.log(noms);
 });
 
-const elementsDisponibles = pieces.map(piece => piece.nom, piece => piece.description);
-console.log(elementsDisponibles);
+
+const boutonDisponible = document.querySelector(".btn-disponible");
+const disponibles = document.querySelector(".disponibles"); 
+disponibles.style.display = "none";
+
+boutonDisponible.addEventListener("click", function() {
+
+    const nomsDisponibles = pieces.map(piece => piece.nom);
+    const prixDisponibles = pieces.map(piece => piece.prix);
+
+    for (let i = pieces.length - 1; i >= 0; i--) {
+
+        if (pieces[i].disponibilite === false) {
+            nomsDisponibles.splice(i, 1);
+            prixDisponibles.splice(i, 1);
+        }    
+    }
+
+    const elementsDisponibles = document.createElement("ul");
+
+    for(let i = 0; i < nomsDisponibles.length; i++) {
+        const elements = document.createElement("li");
+        elements.innerText = `${nomsDisponibles[i]} – ${prixDisponibles[i]} €`;
+        elementsDisponibles.appendChild(elements);
+    }
+
+    disponibles.appendChild(elementsDisponibles);
+    disponibles.style.display = "inline-block";
+
+    console.log(nomsDisponibles);
+    console.log(prixDisponibles);
+
+});
