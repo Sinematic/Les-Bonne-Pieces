@@ -159,28 +159,17 @@ boutonDisponible.addEventListener("click", function() {
     disponibles.style.display = "inline-block";
     console.log(nomsDisponibles);
     console.log(prixDisponibles);
-
 });
 
 
+const range = document.querySelector("#prix-max");
 
+range.addEventListener("input", function() {
 
+    const piecesFiltrees = pieces.filter(function(piece) {
+        return piece.prix <= range.value;
+    });
 
-/*
-function genererPieces(pieces) {
-    for (let i = 0; i < pieces.length; i++) {
-         // Création d’une balise dédiée à une pièce auto
-         const pieceElement = document.createElement("article");
-         // On crée l’élément img.
-         const imageElement = document.createElement("img");
-         // On accède à l’indice i de la liste pieces pour configurer la source de l’image.
-         imageElement.src = pieces[i].image;
-         // On rattache l’image à pieceElement (la balise article)
-         pieceElement.appendChild(imageElement);
-         // Idem pour le nom, le prix et la catégorie ...
-         // ...    
-         // On rattache la balise article au body
-         document.body.appendChild(pieceElement);
-    }
-   
-  }*/
+    document.querySelector(".fiches").innerHTML = "";
+    genererPieces(piecesFiltrees);
+});
