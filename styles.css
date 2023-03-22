@@ -66,3 +66,13 @@ main {
 .fiches article h2 {
 	text-align: center;
 }
+
+button {
+	background-color: whitesmoke;
+	margin-bottom: 7px;
+	padding: 8px;
+	border: 2px solid #7451eb;
+	color: #7451eb;
+	border-radius: 5px;
+	
+}

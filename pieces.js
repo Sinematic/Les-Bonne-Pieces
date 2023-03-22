@@ -108,6 +108,8 @@ abordables.style.display = "none";
 
 boutonMapTri.addEventListener("click", function() {
     
+    abordables.innerHTML = "<p>Pièces abordables :</p>";
+
     const noms = pieces.map(piece => piece.nom);
 
     for(let i = pieces.length - 1; i >= 0; i--) {
@@ -136,6 +138,8 @@ disponibles.style.display = "none";
 
 boutonDisponible.addEventListener("click", function() {
 
+    disponibles.innerHTML = "<p>Pièces disponibles :</p>";
+    
     const nomsDisponibles = pieces.map(piece => piece.nom);
     const prixDisponibles = pieces.map(piece => piece.prix);
 
