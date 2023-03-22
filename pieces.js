@@ -1,3 +1,6 @@
+import { ajoutListenersAvis } from "/avis.js";
+
+
 const pieces = await fetch("pieces-autos.json").then(pieces => pieces.json());
 
 const sectionFiches = document.querySelector(".fiches");
@@ -8,34 +11,45 @@ function genererPieces(pieces) {
 
     for(let i = 0; i <pieces.length; i++) {
 
+        const article = pieces[i];
         const pieceElement = document.createElement("article");
 
         const imageElement = document.createElement("img");
-        imageElement.src = pieces[i].image;
+        imageElement.src = article.image;
         pieceElement.appendChild(imageElement);
 
         const nomElement = document.createElement("h2");
-        nomElement.innerText = pieces[i].nom;
+        nomElement.innerText = article.nom;
         pieceElement.appendChild(nomElement);
 
         const prixElement = document.createElement("p");
-        prixElement.innerText = `Prix : ${pieces[i].prix} (${pieces[i].prix < 35 ? "€" : "€€€"})`;
+        prixElement.innerText = `Prix : ${article.prix} (${article.prix < 35 ? "€" : "€€€"})`;
         pieceElement.appendChild(prixElement);
 
         const categorieElement = document.createElement("p");
-        categorieElement.innerText = pieces[i].categorie ?? "(aucune catégorie)";
+        categorieElement.innerText = article.categorie ?? "(aucune catégorie)";
         pieceElement.appendChild(categorieElement);
 
         const descriptionElement = document.createElement("p");
-        descriptionElement.innerText = pieces[i].description ?? "Pas de description pour le moment.";
+        descriptionElement.innerText = article.description ?? "Pas de description pour le moment.";
         pieceElement.appendChild(descriptionElement);
 
         const disponibiliteElement = document.createElement("p");
-        disponibiliteElement.innerText = pieces[i].disponibilite ? "En stock" : "Rupture de stock";
+        disponibiliteElement.innerText = article.disponibilite ? "En stock" : "Rupture de stock";
         pieceElement.appendChild(disponibiliteElement);
+        
+        const avisBouton = document.createElement("button");
+        
+        avisBouton.dataset.id = 1;//article.id;*/
+        console.log(avisBouton.dataset.id + " dataset.id");
+        console.log(article.id + " article id");
+        avisBouton.textContent = "Afficher les avis";
+        pieceElement.appendChild(avisBouton);
         
         sectionFiches.appendChild(pieceElement);
     }
+
+    ajoutListenersAvis();
 }
 
 const boutonTrier = document.querySelector('.btn-trier'); /* Tri par pri croissant */
