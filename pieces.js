@@ -39,10 +39,7 @@ function genererPieces(pieces) {
         pieceElement.appendChild(disponibiliteElement);
         
         const avisBouton = document.createElement("button");
-        
-        avisBouton.dataset.id = 1;//article.id;*/
-        console.log(avisBouton.dataset.id + " dataset.id");
-        console.log(article.id + " article id");
+        avisBouton.dataset.id = article.id;
         avisBouton.textContent = "Afficher les avis";
         pieceElement.appendChild(avisBouton);
         
@@ -52,7 +49,7 @@ function genererPieces(pieces) {
     ajoutListenersAvis();
 }
 
-const boutonTrier = document.querySelector('.btn-trier'); /* Tri par pri croissant */
+const boutonTrier = document.querySelector('.btn-trier'); // Tri par pri croissant
 
 boutonTrier.addEventListener("click", function() {
 
@@ -66,7 +63,7 @@ boutonTrier.addEventListener("click", function() {
 });
 
 
-const boutonFiltrer = document.querySelector('.btn-filtrer'); /* Tri des éléments non abordables */
+const boutonFiltrer = document.querySelector('.btn-filtrer'); // Tri des éléments non abordables
 
 boutonFiltrer.addEventListener("click", function() {
 
@@ -79,7 +76,7 @@ boutonFiltrer.addEventListener("click", function() {
 });
 
 
-const boutonDescription = document.querySelector('.btn-nodesc'); /* Tri des éléments ne possédant pas une description */
+const boutonDescription = document.querySelector('.btn-nodesc'); // Tri des éléments ne possédant pas une description
 
 boutonDescription.addEventListener("click", function() {
 
@@ -92,7 +89,7 @@ boutonDescription.addEventListener("click", function() {
 });
 
 
-const boutonDecroissant = document.querySelector('.btn-decroissant'); /* Tri par pri décroissant */
+const boutonDecroissant = document.querySelector('.btn-decroissant'); // Tri par pri décroissant
 
 boutonDecroissant.addEventListener("click", function() {
 
@@ -106,8 +103,9 @@ boutonDecroissant.addEventListener("click", function() {
     genererPieces(piecesOrdonnees);
 });
 
+/*
 
-const boutonMap = document.querySelector('.btn-map'); /* Tri pour ne récupérer que les noms des pièces*/
+const boutonMap = document.querySelector('.btn-map'); // Tri pour ne récupérer que les noms des pièces
 
 boutonMap.addEventListener("click", function() {
     const nomsPieces = pieces.map(piece => piece.nom);
@@ -115,7 +113,7 @@ boutonMap.addEventListener("click", function() {
 });
 
 
-const boutonMapTri = document.querySelector('.btn-abordable'); /* Affichage des noms des pièces abordables */
+const boutonMapTri = document.querySelector('.btn-abordable'); // Affichage des noms des pièces abordables
 
 const abordables = document.querySelector(".abordables"); 
 abordables.style.display = "none";
@@ -178,6 +176,8 @@ boutonDisponible.addEventListener("click", function() {
     console.log(nomsDisponibles);
     console.log(prixDisponibles);
 });
+
+*/
 
 
 const range = document.querySelector("#prix-max");
